@@ -21,7 +21,7 @@ Use a regular host user that can run Docker. The setup generates matching
 container UID/GID values so its persistent files remain owned by that user.
 
 ```sh
-git clone YOUR_REPOSITORY_URL luanti-hacked-server
+git clone https://github.com/micsthepick/luanti-hacked-serverside luanti-hacked-server
 cd luanti-hacked-server
 python3 scripts/setup.py
 ```
