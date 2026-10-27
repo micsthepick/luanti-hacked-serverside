@@ -1,0 +1,14 @@
+server_name = Luanti HACKED
+server_description = Experimental Mineclonia automation server
+server_announce = false
+# Container interface; host exposure is controlled by PUBLISH_ADDRESS in .env.
+bind_address = 0.0.0.0
+port = 30000
+max_users = 10
+creative_mode = false
+enable_damage = true
+enable_pvp = true
+enable_mod_channels = true
+ai_gate_deadline = 4
+ai_gate_min_steps = 2
+ai_gate_debug_solutions = false

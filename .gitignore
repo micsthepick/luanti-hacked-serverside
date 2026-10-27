@@ -1,0 +1,15 @@
+# Runtime world, identities, local configuration and fetched upstream checkout.
+/runtime/
+/games/
+/config/
+/.env
+/backups/
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+/auth.txt
+/debug.txt
+*.log
+__pycache__/
+*.pyc

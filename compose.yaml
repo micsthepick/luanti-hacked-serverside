@@ -1,0 +1,25 @@
+services:
+  server:
+    image: ghcr.io/luanti-org/luanti:5.17.0
+    restart: unless-stopped
+    user: "${PUID:-30000}:${PGID:-30000}"
+    environment:
+      HOME: /var/lib/minetest
+      LUANTI_USER_PATH: /var/lib/minetest/.minetest
+      XDG_CACHE_HOME: /var/lib/minetest/cache
+    ports:
+      - "${PUBLISH_ADDRESS:-127.0.0.1}:${SERVER_PORT:-30000}:30000/udp"
+    volumes:
+      - ./runtime:/var/lib/minetest
+      - ./config:/etc/minetest:ro
+      - ./games:/var/lib/minetest/.minetest/games:ro
+      - ./mods/ai_gate:/var/lib/minetest/.minetest/worlds/hacked/worldmods/ai_gate:ro
+    command:
+      - --config
+      - /etc/minetest/minetest.conf
+      - --gameid
+      - mineclonia
+      - --world
+      - /var/lib/minetest/.minetest/worlds/hacked
+      - --info
+    stop_grace_period: 30s

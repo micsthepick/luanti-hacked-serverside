@@ -1,0 +1,26 @@
+name: Server tests
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  lua:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - run: sudo apt-get update && sudo apt-get install -y luajit lua5.4
+      - name: Gate and complexity regression (simulated engine)
+        run: |
+          luajit tests/ai_gate_test.lua
+          luajit tests/complexity_test.lua
+          lua5.4 tests/ai_gate_test.lua
+          lua5.4 tests/complexity_test.lua
+      - run: python3 scripts/audit.py
+      - run: python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: Validate Compose configuration
+        run: |
+          python3 scripts/setup.py --prepare-only
+          docker compose config --quiet

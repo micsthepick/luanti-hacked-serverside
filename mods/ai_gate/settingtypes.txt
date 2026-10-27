@@ -1,0 +1,6 @@
+# Minimum semantic DSL operations on strings of length 8..12 over abcdeABCDE12345.
+# Challenges and answers reducible below this count are rejected.
+ai_gate_min_steps (Minimum challenge steps) int 2 1 4
+
+# Response window from issuance, enforced by the server.
+ai_gate_deadline (Challenge deadline seconds) int 4 2 300
